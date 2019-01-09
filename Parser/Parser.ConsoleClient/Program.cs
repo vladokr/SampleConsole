@@ -39,6 +39,8 @@ namespace Parser.ConsoleClient
               
                 TextReportService reportService = new TextReportService(wordSorter, reportWriter, logger);
                 reportService.ProduceReport(words, reportConfig);
+
+                Console.WriteLine("Finished.");
             }
             catch(Exception ex)
             {
@@ -46,6 +48,7 @@ namespace Parser.ConsoleClient
             }
 
 
+            
             Console.WriteLine("Press any key to exit ...");
             Console.Read();
         }
