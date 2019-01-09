@@ -21,3 +21,13 @@ Furthermore, if ReportOutputFilePath, LogFilePath and TextToAnalyzePath are left
 * ReportOutputFilePath - {current directory}\report.txt
 * LogFilePath - {current directory}\log.txt
 * TextToAnalyzePath - {current directory}\input.txt
+
+## How to run the application?
+* clone the git repository
+* navigate to SampleConsole folder
+* build the project with: dotnet build
+* run the console application with: dotnet run --project ./Parser/Parser.ConsoleClient
+
+### In Visual Studio
+* open the solution file SampleConsole.sln
+* run the Parser.ConsoleClient application
