@@ -24,7 +24,7 @@ namespace Parser.ConsoleClient
 
             try
             {
-                // prepare dependencies (TODO: can be done with DI container)
+                // prepare dependencies (TODO: can be done with a DI container)
                 ILogger logger = new FileLogger(LogFilePath);
                 ITextReader textReader = new FileTextReader();
                 IWordSorter wordSorter = new LengthASCIIWordSorter();
