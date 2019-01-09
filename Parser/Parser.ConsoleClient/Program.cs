@@ -42,28 +42,30 @@ namespace Parser.ConsoleClient
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
             }
 
 
             Console.WriteLine("Press any key to exit ...");
-            Console.ReadKey();
+            Console.Read();
         }
 
         private static void initializeConfiguration()
         {
+            Console.WriteLine($"Reading configuration in {Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json")}");
+
             IConfiguration config = new ConfigurationBuilder()
               .SetBasePath(Directory.GetCurrentDirectory())
               .AddJsonFile("appsettings.json", optional: false)
               .Build();
 
 
-            String ReportOutputFilePath = config.GetValue<String>("ReportOutputFilePath");
-            String LogFilePath = config.GetValue<String>("LogFilePath");
-            String TextToAnalyzePath = config.GetValue<String>("TextToAnalyzePath");
+            ReportOutputFilePath = config.GetValue<String>("ReportOutputFilePath");
+            LogFilePath = config.GetValue<String>("LogFilePath");
+            TextToAnalyzePath = config.GetValue<String>("TextToAnalyzePath");
 
             // configure the report
-            ReportConfig reportConfig = new ReportConfig();
+            reportConfig = new ReportConfig();
             config.GetSection("ReportConfig").Bind(reportConfig);
 
             // if not provided in appsetting.json set default values
@@ -81,6 +83,10 @@ namespace Parser.ConsoleClient
             {
                 TextToAnalyzePath = Path.Combine(Directory.GetCurrentDirectory(), "input.txt");
             }
+
+            Console.WriteLine($"LogFilePath is {LogFilePath}");
+            Console.WriteLine($"ReportOutputFilePath is {ReportOutputFilePath}");
+            Console.WriteLine($"TextToAnalyzePath is {TextToAnalyzePath}");
         }
     }
 }
