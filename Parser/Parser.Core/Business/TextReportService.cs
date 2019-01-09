@@ -49,7 +49,7 @@ namespace Parser.Core.Business
 
             // create the report
             StringBuilder sbReport = new StringBuilder();
-            reportWriter.Write(Config.Title);
+            reportWriter.Write(Config.ReportTitle);
             foreach (Word word in sortedWords)
             {
                 sbReport.AppendLine(word.Counter + Config.Separator + word.Name);

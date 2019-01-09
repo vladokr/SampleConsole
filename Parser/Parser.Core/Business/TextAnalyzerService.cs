@@ -7,7 +7,8 @@ using System.Text;
 namespace Parser.Core.Business
 {
     /// <summary>
-    /// 
+    /// It computes the number of occurrences of each word in a given text.
+    /// The text empty lines are skipped, and are not considered.
     /// </summary>
     public class TextAnalyzerService
     {
@@ -30,6 +31,11 @@ namespace Parser.Core.Business
             this.logger = Logger;
         }
 
+        /// <summary>
+        /// Reads the text provided at FilePath and counts the number of occurrences of each word.
+        /// </summary>
+        /// <param name="FilePath">File path location of the text file that needs to be processed.</param>
+        /// <returns>A list of words where each word contains the string value and the number of occurrences in the text.</returns>
         public IList<Word> Analyze(string FilePath)
         {
             IList<String> lines = textReader.Read(FilePath);
@@ -47,7 +53,7 @@ namespace Parser.Core.Business
                 IList<String> words = CreateWords(line);
                 foreach(String word in words)
                 {
-                    if (String.IsNullOrEmpty(word))
+                    if (word == null)
                     {
                         continue;
                     }
@@ -77,12 +83,12 @@ namespace Parser.Core.Business
         private IList<String> CreateWords(String line)
         {
             IList<String> words = new List<String>();
-            if (String.IsNullOrEmpty(line))
+            if (String.IsNullOrWhiteSpace(line))
             {
                 return words;
             }
 
-            return line.Split(String.Empty);
+            return line.Split(" ");
         }
     }
 }
