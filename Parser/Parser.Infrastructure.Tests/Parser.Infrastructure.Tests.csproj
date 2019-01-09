@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Parser.Core\Parser.Core.csproj" />
+    <ProjectReference Include="..\Parser.Infrastructure\Parser.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

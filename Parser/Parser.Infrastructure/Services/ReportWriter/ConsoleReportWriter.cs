@@ -9,7 +9,7 @@ namespace Parser.Infrastructure.Services
     {
         public void Write(string Content)
         {
-            throw new NotImplementedException();
+            System.Console.WriteLine(Content);
         }
     }
 }
