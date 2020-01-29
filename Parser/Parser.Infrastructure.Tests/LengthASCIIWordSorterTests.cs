@@ -14,7 +14,7 @@ namespace Parser.Infrastructure.Tests
         public void Sort_ListWithNullItems_SortsByLenght()
         {
             LengthASCIIWordSorter stu = new LengthASCIIWordSorter();
-            IList<Word> words = new List<Word>();
+            List<Word> words = new List<Word>();
             words.Add(new Word(null, 1));
             words.Add(new Word("the", 1));
             words.Add(new Word("vlado", 1));
@@ -22,7 +22,7 @@ namespace Parser.Infrastructure.Tests
             words.Add(new Word("  ", 2));
             words.Add(new Word(null, 2));
 
-            IList<Word> sortedWords = stu.Sort(words);
+            IReadOnlyList<Word> sortedWords = stu.Sort(words);
 
             Assert.AreEqual(null, sortedWords[0].Name);
             Assert.AreEqual(null, sortedWords[1].Name);
@@ -37,12 +37,12 @@ namespace Parser.Infrastructure.Tests
         public void Sort_ListWithDifferentNameLength_SortedByLength()
         {
             LengthASCIIWordSorter stu = new LengthASCIIWordSorter();
-            IList<Word> words = new List<Word>();
+            List<Word> words = new List<Word>();
             words.Add(new Word("quickedtest", 1));
             words.Add(new Word("the", 1));
             words.Add(new Word("vlado", 1));
 
-            IList<Word> sortedWords = stu.Sort(words);
+            IReadOnlyList<Word> sortedWords = stu.Sort(words);
 
             Assert.AreEqual("the", sortedWords[0].Name);
             Assert.AreEqual("vlado", sortedWords[1].Name);
@@ -53,7 +53,7 @@ namespace Parser.Infrastructure.Tests
         public void Sort_ListWithSameAndDifferentNameLength_SortedByLenghtAndASCII()
         {
             LengthASCIIWordSorter stu = new LengthASCIIWordSorter();
-            IList<Word> words = new List<Word>();
+            List<Word> words = new List<Word>();
             words.Add(new Word("quick", 1));
             words.Add(new Word("back", 1));
             words.Add(new Word("the", 1));
@@ -66,7 +66,7 @@ namespace Parser.Infrastructure.Tests
             words.Add(new Word("fox", 1));
             
 
-            IList<Word> sortedWords = stu.Sort(words);
+            IReadOnlyList<Word> sortedWords = stu.Sort(words);
 
             Assert.AreEqual("The", sortedWords[0].Name);
             Assert.AreEqual("fox", sortedWords[1].Name);

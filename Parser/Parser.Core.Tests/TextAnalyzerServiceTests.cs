@@ -32,7 +32,7 @@ namespace Parser.Core.Tests
             var logger = Substitute.For<ILogger>();
             TextAnalyzerService stu = new TextAnalyzerService(textReader, logger);
             
-            IList<Word> words = stu.Analyze(null);
+            IReadOnlyList<Word> words = stu.Analyze(null);
 
             Assert.AreEqual(0, words.Count);
             logger.Received(1).LogInfo(Arg.Any<String>());
@@ -42,7 +42,7 @@ namespace Parser.Core.Tests
         public void Analyze_ForListOfLinesWithEmptyLines_ListOfWordsReturned()
         {
             String someFilePath = "testPath";
-            IList<String> lines = new List<String>();
+            List<String> lines = new List<String>();
             lines.Add("The quick brown quick");
             lines.Add("                      ");
             lines.Add("over dog's quick brown dog's");
@@ -51,7 +51,7 @@ namespace Parser.Core.Tests
             var logger = Substitute.For<ILogger>();
             TextAnalyzerService stu = new TextAnalyzerService(textReader, logger);
 
-            IList<Word> words = stu.Analyze(someFilePath);
+            IReadOnlyList<Word> words = stu.Analyze(someFilePath);
 
             Assert.AreEqual(5, words.Count);
             Assert.AreEqual("The", words[0].Name);

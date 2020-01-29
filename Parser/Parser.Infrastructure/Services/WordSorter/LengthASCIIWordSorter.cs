@@ -2,7 +2,6 @@
 using Parser.Core.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Parser.Infrastructure.Services.WordSorter
 {
@@ -11,7 +10,7 @@ namespace Parser.Infrastructure.Services.WordSorter
     /// </summary>
     public class LengthASCIIWordSorter : IWordSorter
     {
-        public IList<Word> Sort(IList<Word> Words)
+        public IReadOnlyList<Word> Sort(IReadOnlyList<Word> Words)
         {
             List<Word> unSortedList = new List<Word>(Words);
             unSortedList.Sort(new LenghtAsciiComparer());

@@ -36,10 +36,10 @@ namespace Parser.Core.Business
         /// </summary>
         /// <param name="FilePath">File path location of the text file that needs to be processed.</param>
         /// <returns>A list of words where each word contains the string value and the number of occurrences in the text.</returns>
-        public IList<Word> Analyze(string FilePath)
+        public IReadOnlyList<Word> Analyze(string FilePath)
         {
-            IList<String> lines = textReader.Read(FilePath);
-            IList<Word> wordList = new List<Word>();
+            IReadOnlyList<string> lines = textReader.Read(FilePath);
+            List<Word> wordList = new List<Word>();
 
             if (lines == null || lines.Count == 0)
             {

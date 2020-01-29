@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Parser.Core.Interfaces
 {
@@ -9,6 +7,6 @@ namespace Parser.Core.Interfaces
     /// </summary>
     public interface ITextReader
     {
-        IList<string> Read(string FilePath);
+        IReadOnlyList<string> Read(string FilePath);
     }
 }

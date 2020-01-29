@@ -29,12 +29,12 @@ namespace Parser.Core.Business
                 throw new ArgumentNullException("Logger", "Logger service cannot be null.");
             }
 
-            this.wordSorter = WordSorter;
-            this.reportWriter = ReportWriter;
-            this.logger = Logger;
+            wordSorter = WordSorter;
+            reportWriter = ReportWriter;
+            logger = Logger;
         }
 
-        public void ProduceReport(IList<Word> Words, ReportConfig Config)
+        public void ProduceReport(IReadOnlyList<Word> Words, ReportConfig Config)
         {
             if (Words == null || Words.Count == 0)
             {
@@ -45,7 +45,7 @@ namespace Parser.Core.Business
             logger.LogInfo($"Start creating report for {Words.Count} words.");
 
             // sort the words
-            IList<Word> sortedWords = wordSorter.Sort(Words);
+            IReadOnlyList<Word> sortedWords = wordSorter.Sort(Words);
 
             // create the report
             StringBuilder sbReport = new StringBuilder();
