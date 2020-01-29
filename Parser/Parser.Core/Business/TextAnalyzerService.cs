@@ -58,9 +58,9 @@ namespace Parser.Core.Business
                         continue;
                     }
 
-                    if (wordDictionary.ContainsKey(word))
+                    if (wordDictionary.TryGetValue(word, out int count))
                     {
-                        wordDictionary[word]++;
+                        wordDictionary[word] = count + 1;
                     }
                     else
                     {
