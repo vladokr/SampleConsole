@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Parser.Core.DTO
 {
     /// <summary>
     /// Represents a single word with number of occurences
     /// </summary>
-    public struct Word
+    public readonly struct Word : IEquatable<Word>
     {
-        public String Name;
-        public int Counter;
-        public Word(String Name, int Counter)
+        public readonly string Name;
+        public readonly int Counter;
+        public Word(string Name, int Counter)
         {
             this.Name = Name;
             this.Counter = Counter;
         }
+
+        public bool Equals(Word other) => other.Name == Name && other.Counter == Counter;
+        public override bool Equals(object obj) => obj is Word other ? Equals(other) : false;
+        public override int GetHashCode() => Counter.GetHashCode() + Name.GetHashCode();
     }
 }

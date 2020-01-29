@@ -35,7 +35,7 @@ namespace Parser.ConsoleClient
                 IReportWriter reportWriter = new FileReportWriter(ReportOutputFilePath);
 
                 TextAnalyzerService textAnalyzer = new TextAnalyzerService(textReader, logger);
-                IList<Word> words = textAnalyzer.Analyze(TextToAnalyzePath);
+                IReadOnlyList<Word> words = textAnalyzer.Analyze(TextToAnalyzePath);
               
                 TextReportService reportService = new TextReportService(wordSorter, reportWriter, logger);
                 reportService.ProduceReport(words, reportConfig);
